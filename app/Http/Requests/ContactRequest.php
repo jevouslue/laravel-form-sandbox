@@ -26,7 +26,7 @@ class ContactRequest extends FormRequest
             'first_name' => ['required', 'string', 'max:255'],
             'tel' => ['nullable', 'regex:/^0(\d-?\d{4}|\d{2}-?\d{3}|\d{3}-?\d{2}|\d{4}-?\d|\d0-?\d{4})-?\d{4}$/'],
             'email' => ['required', 'email'],
-            'body' => ['required', 'string', 'max:2000'],
+            'body' => ['required', 'string', 'max:5000'],
         ];
     }
 
@@ -44,7 +44,11 @@ class ContactRequest extends FormRequest
     public function messages()
     {
         return [
-            'tel.regex' => ':attributeを正しく入力してください'
+            'required' => ':attributeは必須項目です',
+            'string' => ':attributeは文字列で入力してください',
+            'max' => ['string' => ':attributeは:max文字以下で入力してください'],
+            'email' => ':attributeを正しく入力してください',
+            'regex' => ':attributeを正しく入力してください',
         ];
     }
 }
